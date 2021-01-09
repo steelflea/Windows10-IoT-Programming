@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>ed4cd2d8-0ae0-4065-afe5-974f01264980</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ObjectDescriptor">
+      <UniqueIdentifier>{27860aca-2183-4985-ba93-e878d69e9499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenCvWrapper">
+      <UniqueIdentifier>{37fe501b-c343-4adb-8aba-dcf82c428ea0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="ObjectDescriptor.cpp">
+      <Filter>ObjectDescriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenCvWrapper.cpp">
+      <Filter>OpenCvWrapper</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="ThresholdType.h" />
+    <ClInclude Include="ObjectDescriptor.h">
+      <Filter>ObjectDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenCvWrapper.h">
+      <Filter>OpenCvWrapper</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

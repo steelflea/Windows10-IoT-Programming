@@ -1,0 +1,113 @@
+﻿<Page
+    x:Class="ImageProcessing.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ImageProcessing"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Thickness x:Key="DefaultMargin">5</Thickness>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+            <Setter Property="FontSize"
+                    Value="20" />
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+            <Setter Property="MinWidth"
+                    Value="150" />
+        </Style>
+
+        <Style TargetType="Slider">
+            <Setter Property="MinWidth"
+                    Value="300" />
+            <Setter Property="Minimum"
+                    Value="0" />
+            <Setter Property="Maximum"
+                    Value="255" />
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="HorizontalAlignment"
+                    Value="Left" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+            <Setter Property="MaxWidth"
+                    Value="40" />
+            <Setter Property="IsReadOnly"
+                    Value="True" />
+        </Style>
+
+        <Style TargetType="Image">
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+            <Setter Property="Stretch"
+                    Value="Uniform" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="ButtonLoadImage"
+                Content="Browse..."
+                Click="ButtonLoadImage_Click" />
+
+        <StackPanel Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal">
+
+            <TextBlock Text="Threshold type:" />
+
+            <ComboBox SelectedItem="{x:Bind ThresholdType, Mode=TwoWay}"
+                      ItemsSource="{x:Bind thresholdTypes}" />
+
+            <TextBlock Text="Threshold level:" />
+
+            <Slider x:Name="SliderThresholdLevel"
+                    Value="{x:Bind ThresholdLevel, Mode=TwoWay}" />
+
+            <TextBox Text="{x:Bind ThresholdLevel, Mode=OneWay}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2"
+                    Grid.ColumnSpan="2">
+            <Button x:Name="ButtonDrawContours"
+                    Content="Draw contours"
+                    Click="ButtonDrawContours_Click" />
+        </StackPanel>
+
+        <Image Source="{x:Bind InputImage, Mode=OneWay}"
+               Grid.Row="3" />
+
+        <Image Source="{x:Bind ProcessedImage, Mode=OneWay}"
+               Grid.Row="3"
+               Grid.Column="2" />
+    </Grid>
+
+</Page>
