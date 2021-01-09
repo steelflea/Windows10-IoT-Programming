@@ -1,0 +1,22 @@
+﻿<node>
+  <description>AllJoyn introspection XML for the Sense HAT LED array </description>
+
+  <interface name="com.iot.SenseHatLedArray">
+    <description>Provides basic LED array control functionality</description>
+
+    <method name="DrawShape">
+      <description>Draws selected shape on the LED array</description>
+      <arg name="shapeKind" type="i" direction="in">
+        <description>A value to specify the shape to be drawn</description>
+      </arg>
+    </method>
+
+    <method name="TurnOff">
+      <description>Turns the LED array off</description>
+    </method>
+
+    <property name="Shape" type="y" access="read">
+      <description>The current shape drawn on the LED array</description>
+    </property>
+  </interface>
+</node>

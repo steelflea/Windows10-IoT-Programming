@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>52ea4c37-007e-4c79-99b3-c496f0af1306</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="AllJoynBusObjectManager.cpp" />
+    <ClCompile Include="AllJoynHelpers.cpp" />
+    <ClCompile Include="SenseHatLedArrayConsumer.cpp" />
+    <ClCompile Include="SenseHatLedArrayProducer.cpp" />
+    <ClCompile Include="SenseHatLedArrayServiceEventAdapter.cpp" />
+    <ClCompile Include="SenseHatLedArrayServiceEventArgs.cpp" />
+    <ClCompile Include="SenseHatLedArraySignals.cpp" />
+    <ClCompile Include="SenseHatLedArrayWatcher.cpp" />
+    <ClCompile Include="TypeConversionHelpers.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="AllJoynBusObjectManager.h" />
+    <ClInclude Include="AllJoynHelpers.h" />
+    <ClInclude Include="ISenseHatLedArrayService.h" />
+    <ClInclude Include="SenseHatLedArrayConsumer.h" />
+    <ClInclude Include="SenseHatLedArrayEventArgs.h" />
+    <ClInclude Include="SenseHatLedArrayMethodResults.h" />
+    <ClInclude Include="SenseHatLedArrayProducer.h" />
+    <ClInclude Include="SenseHatLedArrayServiceEventAdapter.h" />
+    <ClInclude Include="SenseHatLedArrayServiceEventArgs.h" />
+    <ClInclude Include="SenseHatLedArraySignals.h" />
+    <ClInclude Include="SenseHatLedArrayStructures.h" />
+    <ClInclude Include="SenseHatLedArrayWatcher.h" />
+    <ClInclude Include="TypeConversionHelpers.h" />
+  </ItemGroup>
+</Project>
