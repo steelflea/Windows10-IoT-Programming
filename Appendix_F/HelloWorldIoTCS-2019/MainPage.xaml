@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="HelloWorldIoTCS_2019.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HelloWorldIoTCS_2019"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Thickness x:Key="DefaultMargin">5</Thickness>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+        </Style>
+
+        <Style TargetType="StackPanel">
+            <Setter Property="VerticalAlignment"
+                    Value="Top" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <Button x:Name="ButtonInitializeGpio"
+                    Content="Initialize"
+                    IsEnabled="{x:Bind blinkingViewModel.IsGpioPinAvailable, Converter={StaticResource LogicalNegationConverter}, Mode=OneWay}"
+                    Click="ButtonInitializeGpio_Click" />
+
+            <Button x:Name="ButtonStartBlinking"
+                    Content="Start blinking"
+                    IsEnabled="{x:Bind blinkingViewModel.IsStartBlinkingButtonEnabled, Mode=OneWay}"
+                    Click="ButtonStartBlinking_Click" />
+
+            <Button x:Name="ButtonStopBlinking"
+                    Content="Stop blinking"
+                    IsEnabled="{x:Bind blinkingViewModel.IsStopBlinkingButtonEnabled, Mode=OneWay}"
+                    Click="ButtonStopBlinking_Click" />
+        </StackPanel>
+    </Grid>
+</Page>
