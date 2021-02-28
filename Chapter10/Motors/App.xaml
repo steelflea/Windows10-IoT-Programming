@@ -1,0 +1,16 @@
+﻿<Application
+    x:Class="Motors.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Motors"
+    xmlns:converters="using:Motors.Converters"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+        <converters:ObjectToDcMotorIndexConverter x:Key="ObjectToDcMotorIndexConverter" />
+        <converters:ObjectToMotorDirectionConverter x:Key="ObjectToMotorDirectionConverter" />
+        <converters:ObjectToStepperMotorIndexConverter x:Key="ObjectToStepperMotorIndexConverter" />
+        <converters:UIntToDoubleConverter x:Key="UIntToDoubleConverter" />
+        <converters:BooleanToSteppingModeConverter x:Key="BooleanToSteppingModeConverter" />
+    </Application.Resources>
+</Application>

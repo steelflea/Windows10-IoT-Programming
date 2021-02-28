@@ -1,0 +1,195 @@
+﻿<Page
+    x:Class="Motors.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Motors"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Thickness x:Key="DefaultMargin">10</Thickness>
+
+        <x:Double x:Key="DefaultFontSize">24</x:Double>
+        <x:Double x:Key="DefaultComboBoxFontSize">20</x:Double>
+
+        <Style TargetType="Slider">
+            <Setter Property="Width"
+                    Value="200" />
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize"
+                    Value="{StaticResource DefaultFontSize}" />
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+        </Style>
+
+        <Style TargetType="CheckBox">
+            <Setter Property="FontSize"
+                    Value="{StaticResource DefaultFontSize}" />
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize"
+                    Value="{StaticResource DefaultFontSize}" />
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+        </Style>
+
+        <DataTemplate x:Key="ComboBoxDataTemplate">
+            <TextBlock FontSize="{StaticResource DefaultComboBoxFontSize}"
+                       Text="{Binding}" />
+        </DataTemplate>
+    </Page.Resources>
+
+    <Pivot Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--DC Motor-->
+        <PivotItem Header="DC Motor">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--Motor index-->
+                <TextBlock Text="Choose motor:" />
+                <ComboBox ItemsSource="{x:Bind dcMotors}"
+                          SelectedValue="{x:Bind dcMotorIndex, Mode=TwoWay, Converter={StaticResource ObjectToDcMotorIndexConverter}}"
+                          Grid.Column="1"
+                          ItemTemplate="{StaticResource ComboBoxDataTemplate}" />
+
+                <!--Speed-->
+                <TextBlock Text="Speed:"
+                           Grid.Row="1" />
+
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="1"
+                            Grid.Column="1">
+                    <Slider x:Name="SliderSpeed"
+                            Value="{x:Bind Speed, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="4095" />
+                    <TextBlock Text="{Binding Value, ElementName=SliderSpeed}" />
+                </StackPanel>
+
+                <!--Direction-->
+                <TextBlock Text="Direction:"
+                           Grid.Row="2" />
+                <ComboBox ItemsSource="{x:Bind directions}"
+                          SelectedValue="{x:Bind motorDirection, Mode=TwoWay, Converter={StaticResource ObjectToMotorDirectionConverter}}"
+                          Grid.Row="2"
+                          Grid.Column="1"
+                          ItemTemplate="{StaticResource ComboBoxDataTemplate}" />
+
+                <!--Control-->
+                <StackPanel Grid.Row="3"
+                            Orientation="Horizontal">
+                    <Button x:Name="ButtonStart"
+                            Content="Start"
+                            Click="ButtonStart_Click" />
+
+                    <Button x:Name="ButtonStop"
+                            Content="Stop"
+                            Click="ButtonStop_Click" />
+                </StackPanel>
+            </Grid>
+        </PivotItem>
+
+        <!--Stepper motor-->
+        <PivotItem Header="Stepper Motor">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--Motor index-->
+                <TextBlock Text="Choose motor:" />
+                <ComboBox ItemsSource="{x:Bind stepperMotors}"
+                          SelectedValue="{x:Bind stepperMotorIndex, Mode=TwoWay, Converter={StaticResource ObjectToStepperMotorIndexConverter}}"
+                          Grid.Column="1"
+                          ItemTemplate="{StaticResource ComboBoxDataTemplate}" />
+
+                <!--RPM-->
+                <TextBlock Text="RPM:"
+                           Grid.Row="1" />
+
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="1"
+                            Grid.Column="1">
+                    <Slider x:Name="SliderStepperRpm"
+                            Value="{x:Bind StepperRpm, Mode=TwoWay}"
+                            Minimum="1"
+                            Maximum="60" />
+                    <TextBlock Text="{Binding Value, ElementName=SliderStepperRpm}" />
+                </StackPanel>
+
+
+                <!--Direction-->
+                <TextBlock Text="Direction:"
+                           Grid.Row="2" />
+                <ComboBox ItemsSource="{x:Bind directions}"
+                          SelectedValue="{x:Bind motorDirection, Mode=TwoWay, Converter={StaticResource ObjectToMotorDirectionConverter}}"
+                          Grid.Row="2"
+                          Grid.Column="1"
+                          ItemTemplate="{StaticResource ComboBoxDataTemplate}" />
+
+                <!--Steps-->
+                <TextBlock Text="Steps:"
+                           Grid.Row="3" />
+                
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="3"
+                            Grid.Column="1">
+                    <Slider x:Name="SliderSteps"
+                            Value="{x:Bind stepperMotorSteps, Mode=TwoWay, Converter={StaticResource UIntToDoubleConverter}}"
+                            Minimum="1"
+                            Maximum="200" />
+                    <TextBlock Text="{Binding Value, ElementName=SliderSteps}" />
+                </StackPanel>
+                
+                <!--Control-->
+                <CheckBox Content="Micro-stepping?"
+                          Grid.Row="4"
+                          IsChecked="{x:Bind steppingMode, Mode=TwoWay, Converter={StaticResource BooleanToSteppingModeConverter}}" />
+
+                <Button x:Name="ButtonStepperMove"
+                        Grid.Row="5"
+                        Content="Move stepper"
+                        Click="ButtonStepperMove_Click" />
+
+                <Button x:Name="ButtonStepperMoveAutoSpeedAdjustment"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Content="Move stepper (auto speed)"
+                        Click="ButtonStepperMoveAutoSpeedAdjustment_Click" />
+            </Grid>
+        </PivotItem>
+    </Pivot>
+</Page>

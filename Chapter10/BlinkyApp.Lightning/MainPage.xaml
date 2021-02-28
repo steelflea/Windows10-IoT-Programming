@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="BlinkyApp.Lightning.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Thickness x:Key="DefaultMargin">10</Thickness>
+
+        <Style TargetType="Ellipse">
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+            <Setter Property="Height"
+                    Value="100" />
+            <Setter Property="Width"
+                    Value="150" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+        </Style>
+
+        <Style TargetType="Slider">
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+            <Setter Property="Minimum"
+                    Value="100" />
+            <Setter Property="Maximum"
+                    Value="5000" />
+            <Setter Property="StepFrequency"
+                    Value="100" />
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin"
+                    Value="{StaticResource DefaultMargin}" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="20" />
+        </Style>
+
+    </Page.Resources>
+
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button x:Name="MainButton"
+                Click="MainButton_Click" />
+
+        <Ellipse x:Name="LedEllipse" />
+
+        <Slider x:Name="Slider"
+                ValueChanged="Slider_ValueChanged" />
+
+        <TextBlock Text="{Binding Value, ElementName=Slider}" />
+    </StackPanel>
+
+</Page>
