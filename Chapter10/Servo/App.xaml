@@ -1,0 +1,13 @@
+﻿<Application
+    x:Class="Servo.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Servo"
+    xmlns:converters="using:Servo.Converters"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+        <converters:ObjectToByteConverter x:Key="ObjectToByteConverter" />
+    </Application.Resources>
+    
+</Application>
